@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Greeting from "./components/Greeting";
 import PersonState from "./components/PersonState";
 import LoginState from "./components/LoginState";
+import Clock from "./components/Clock";
 
 // function App() {
 //
@@ -55,6 +56,7 @@ class App extends React.Component {
           <LoginState />
           <h4>State 'answer' value is {this.state.answer}</h4>
 
+          <Clock />
 
           <PersonState />
 

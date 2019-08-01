@@ -13,7 +13,8 @@ class PersonState extends Component {
   render() {
     return (
       <div>
-        <h5>{this.state.name} is {this.state.age} years old.</h5>
+        <h5 onMouseOver={() => console.log("Yea " + this.state.name + "!")}>{this.state.name} is {this.state.age} years old.</h5>
+        <button onClick={() => alert(this.state.name)}>Alert me</button>
       </div>
     );
   }
