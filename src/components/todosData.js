@@ -2,7 +2,7 @@ const todosData = [
   {
     id: 1,
     todo: "Setup the app server",
-    completed: false
+    completed: true
   },
   {
     id: 2,
