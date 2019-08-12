@@ -13,8 +13,13 @@ class TodoItem extends React.Component {
   render() {
     return (
       <div className="todo-item">
-        <input type="checkbox" checked={this.props.item.completed} onChange={() => console.log(this.props.item.completed)} />
-        <p>{this.props.item.todo}</p>
+        <input
+          id={this.props.item.id}
+          type="checkbox"
+          checked={this.props.item.completed}
+          onChange={ () => this.props.handleChange(this.props.item.id)}
+        />
+        <label htmlFor={this.props.item.id}>{this.props.item.todo}</label>
       </div>
     );
   }
