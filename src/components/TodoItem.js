@@ -11,6 +11,16 @@ import React from "react";
 
 class TodoItem extends React.Component {
   render() {
+
+    let styling = this.props.item.completed
+      ? {
+        textDecoration: "line-through",
+        color: "lightgray",
+        fontStyle: "italic"
+      }
+      : {};
+
+
     return (
       <div className="todo-item">
         <input
@@ -19,7 +29,7 @@ class TodoItem extends React.Component {
           checked={this.props.item.completed}
           onChange={ () => this.props.handleChange(this.props.item.id)}
         />
-        <label htmlFor={this.props.item.id}>{this.props.item.todo}</label>
+        <label htmlFor={this.props.item.id} style={styling}>{this.props.item.todo}</label>
       </div>
     );
   }
