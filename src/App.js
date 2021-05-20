@@ -13,7 +13,6 @@ import LoginState from "./components/LoginState";
 import Clock from "./components/Clock";
 import Counter from "./components/Counter";
 import LogoutState from "./components/LogoutState";
-import LogInOut from "./components/LogInOut";
 
 // function App() {
 //
@@ -39,84 +38,101 @@ import LogInOut from "./components/LogInOut";
 // }
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      answer: "Yes",
-      todos: todosData,
-      isLoggedOut: false,
-      ob: {
-        in: false
-      },
-      isLoading: true
-    };
+	constructor(props) {
+		super(props);
+		this.state = {
+			answer: "Yes",
+			todos: todosData,
+			isLoggedOut: false,
+			ob: {
+				in: false
+			},
+			isLoading: true
+		};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleLogoutState = this.handleLogoutState.bind(this);
-  }
+		this.handleChange = this.handleChange.bind(this);
+		this.handleLogoutState = this.handleLogoutState.bind(this);
+	}
 
-  handleChange(id) {
-    this.setState(prevState => {
-      return prevState.todos.map((todo) => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
-      });
-    });
-  }
+	handleChange(id) {
+		this.setState(prevState => {
+			return prevState.todos.map((todo) => {
+				if (todo.id === id) {
+					todo.completed = !todo.completed;
+				}
+				return todo;
+			});
+		});
+	}
 
-  handleLogoutState() {
-    this.setState(prevState => {
-      return {
-        isLoggedOut: !prevState.isLoggedOut,
-        ob: { in: !prevState.ob.in }
-      };
-    });
-  }
+	handleLogoutState() {
+		this.setState(prevState => {
+			return {
+				isLoggedOut: !prevState.isLoggedOut,
+				ob: {in: !prevState.ob.in}
+			};
+		});
+	}
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isLoading: false })
-    }, 1500);
-  }
+	componentDidMount() {
+		setTimeout(() => {
+			this.setState({isLoading: false})
+		}, 1500);
+	}
 
-  render() {
-    const todoComponent = this.state.todos.map(todo => <TodoItem key={todo.id} item={todo} handleChange={this.handleChange} />);
+	render() {
+		const todoComponent = this.state.todos.map(todo => <TodoItem key={todo.id} item={todo}
+		                                                             handleChange={this.handleChange}/>);
 
-    return (
-      <main>
-        <div className="todo-list">
-          {this.state.isLoading
-            ? <h1>Loading components... pls wait!!!</h1>
-            : ''
-          }
-          <Header who={{username: "Mario Ronel"}} />
-          <Header />
-          <Greeting />
-          <LoginState />
-          <h4>State 'answer' value is {this.state.answer}</h4>
-           <PersonState />
+		return (
+			<main>
+				<div className="todo-list">
+					{this.state.isLoading
+						? <h1>Loading components... pls wait!!!</h1>
+						: ''
+					}
+					<Header who={{username: "Mario Ronel"}}/>
+					<Header/>
+					<Greeting/>
+					<LoginState/>
+					<h4>State 'answer' value is {this.state.answer}</h4>
+					<PersonState/>
 
-          <Clock />
+					<Clock/>
 
-          <Counter />
+					<Counter/>
 
-          <LogoutState isLoggedOut={this.state.isLoggedOut} myOb={this.state.ob} handleLogoutState={this.handleLogoutState} />
-          {/*<LogoutState LS={this.state.LS}  />*/}
+					<LogoutState isLoggedOut={this.state.isLoggedOut} myOb={this.state.ob}
+					             handleLogoutState={this.handleLogoutState}/>
+					{/*<LogoutState LS={this.state.LS}  />*/}
 
-          { todoComponent }
+					{todoComponent}
 
-          <ContactCard
-            contact={{name: "Mr. Kritter", imgUrl: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", phone: "(212) 555-6785-1234", email: "mr.kritter@nappy.com"}} />
-          <ContactCard
-            contact={{name: "Mr. Scratcher", imgUrl: "http://placekitten.com/200/300", phone: "(212) 555-6785-1234", email: "mr.kritter@nappy.com"}} />
-          <ContactCard
-            contact={{name: "Ms. Catspaw", imgUrl: "http://placekitten.com/g/200/300", phone: "(212) 555-3289-4321", email: "ms.catspaw@nappy.com"}} />
-        </div>
-      </main>
-    );
-  }
+					<ContactCard
+						contact={{
+							name: "Mr. Kritter",
+							imgUrl: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+							phone: "(212) 555-6785-1234",
+							email: "mr.kritter@nappy.com"
+						}}/>
+					<ContactCard
+						contact={{
+							name: "Mr. Scratcher",
+							imgUrl: "http://placekitten.com/200/300",
+							phone: "(212) 555-6785-1234",
+							email: "mr.kritter@nappy.com"
+						}}/>
+					<ContactCard
+						contact={{
+							name: "Ms. Catspaw",
+							imgUrl: "http://placekitten.com/g/200/300",
+							phone: "(212) 555-3289-4321",
+							email: "ms.catspaw@nappy.com"
+						}}/>
+				</div>
+			</main>
+		);
+	}
 }
 
 
